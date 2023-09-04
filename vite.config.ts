@@ -64,26 +64,6 @@ export default ({ mode }: ConfigEnv) => {
     base: './',
     define: {
       VUE_I18N_DISABLE_AUTOFOCUS: true
-    },
-    server: {
-      host: '0.0.0.0',
-      // 开发状态的端口号
-      port: 7003,
-      // 代理规则配置
-      proxy: env.VITE_PROXY_URL
-        ? {
-            '/sdmc/ui/': {
-              target: `${env.VITE_PROXY_PROTOCOL}://${env.VITE_PROXY_URL}/`,
-              changeOrigin: true,
-              secure: false,
-              headers: {
-                Referer: env.VITE_PROXY_URL,
-                Origin: env.VITE_PROXY_URL,
-                Cookie: env.VITE_PROXY_COOKIE ?? ''
-              }
-            }
-          }
-        : {}
     }
   })
 }
